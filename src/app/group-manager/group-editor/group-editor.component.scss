@@ -1,0 +1,9 @@
+form {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: flex-start;
+}
+.row {
+    display: flex;
+    flex-flow: row nowrap;
+}

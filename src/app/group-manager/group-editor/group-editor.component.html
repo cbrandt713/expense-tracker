@@ -1,0 +1,27 @@
+<h1 mat-dialog-title>{{ creationVerb }} Group</h1>
+<form mat-dialog-content [formGroup]="form" *ngIf="!isDeleting">
+    <mat-form-field>
+        <mat-label>Name</mat-label>
+        <input type="text" matInput placeholder="My Cool Group" [formControlName]="'name'" />
+    </mat-form-field>
+    <h4 id="users-label">Users</h4>
+    <div class="row" *ngFor="let user of usersControls; index as i" [formArrayName]="'users'">
+        <mat-form-field>
+            <mat-select aria-labelledby="users-label" [formControlName]="i">
+                <mat-option *ngFor="let user of users" [value]="user.id" [disabled]="isAnotherValue(user, i)">{{ user.name }}</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <button mat-icon-button [color]="'warn'" (click)="removeUser(i)">
+            <mat-icon>clear</mat-icon>
+        </button>
+    </div>
+    <button mat-button (click)="addUser()">
+        New User
+        <mat-icon>add</mat-icon>
+    </button>
+</form>
+<p *ngIf="isDeleting">Are you sure you want to delete this group? This will remove all data associated with it.</p>
+<div mat-dialog-actions>
+    <button mat-button (click)="handleClick()" [disabled]="form.invalid">{{ creationVerb }}</button>
+    <button mat-button mat-dialog-close>Cancel</button>
+</div>

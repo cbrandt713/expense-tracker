@@ -1,0 +1,22 @@
+<h1 mat-dialog-title>{{ creationVerb }} Expense</h1>
+<form mat-dialog-content [formGroup]="form" *ngIf="!isDeleting">
+    <mat-form-field>
+        <mat-label>Cost</mat-label>
+        <input type="text" matInput placeholder="10.99" [formControlName]="'cost'">
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Purpose</mat-label>
+        <input type="text" matInput placeholder="For Five Guys on Saturday" [formControlName]="'purpose'" />
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>User</mat-label>
+        <mat-select [formControlName]="'user'">
+            <mat-option *ngFor="let user of users" [value]="user.id">{{ user.name }}</mat-option>
+        </mat-select>
+    </mat-form-field>
+</form>
+<p *ngIf="isDeleting">Are you sure you want to delete this expense? This will remove all data associated with it.</p>
+<div mat-dialog-actions>
+    <button mat-button (click)="handleClick()" [disabled]="form.invalid">{{ creationVerb }}</button>
+    <button mat-button mat-dialog-close>Cancel</button>
+</div>

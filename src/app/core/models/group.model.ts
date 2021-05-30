@@ -1,3 +1,7 @@
+import { User } from "./user.model";
+
 export interface Group {
-    userIds: number[];
+    id?: number;
+    name: string;
+    users?: User[];
 }

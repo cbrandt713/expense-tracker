@@ -1,1 +1,26 @@
-<p>user-manager works!</p>
+<table mat-table [dataSource]="dataSource">
+    <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> User ID </th>
+        <td mat-cell *matCellDef="let user"> {{ user.id }}</td>
+    </ng-container>
+    <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Name </th>
+        <td mat-cell *matCellDef="let user"> {{ user.name }} </td>
+    </ng-container>
+    <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td class="icon-cell" mat-cell *matCellDef="let user">
+            <button mat-icon-button attr.aria-label="Edit User {{ user.name }}" (click)="showUserDialog('edit', user)">
+                <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-icon-button attr.aria-label="Delete User {{ user.name }}" (click)="showUserDialog('delete', user)">
+                <mat-icon>delete</mat-icon>
+            </button>
+        </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="columns"></tr>
+    <tr mat-row *matRowDef="let row; columns: columns"></tr>
+</table>
+
+<button class="primary" mat-button (click)="showUserDialog('create', undefined)">Create User</button>
