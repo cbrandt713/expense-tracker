@@ -1,12 +1,12 @@
-### Rocket - Expense Tracker (Client Part)
+## Rocket - Expense Tracker (Client Part)
 
-## Installation
+# Installation
 
 ```bash
 $ npm install
 ```
 
-## Running the app
+# Running the app
 
 ```bash
 $ npm start
