@@ -1,12 +1,12 @@
-import { HttpClient } from "@angular/common/http";
-import { Injectable } from "@angular/core";
-import { Observable } from "rxjs";
-import { User } from "../models";
-import { ApiService } from "./api.service";
-import { ICrudService } from "./icrud.service";
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { User } from '../models';
+import { ApiService } from './api.service';
+import { ICrudService } from './icrud.service';
 
 @Injectable({
-    providedIn: 'root'
+    providedIn: 'root',
 })
 export class UserService extends ApiService implements ICrudService<User> {
     constructor(private _http: HttpClient) {

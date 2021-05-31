@@ -42,10 +42,10 @@
     <mat-divider></mat-divider>
     <h1>Debts Owed</h1>
     <button class="primary" mat-button (click)="calculateTotals()">Calculate</button>
-    <ng-container *ngIf="debts">
-        <h3 *ngFor="let result of debts">
+    <mat-list *ngIf="debts">
+        <mat-list-item *ngFor="let result of debts">
             {{ result.from.name }} Owes {{ result.to.name }} {{ result.amount | currency }}
-        </h3>
-    </ng-container>
+        </mat-list-item>
+    </mat-list>
 </ng-container>
 

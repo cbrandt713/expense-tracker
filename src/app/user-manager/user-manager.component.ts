@@ -11,12 +11,11 @@ import { UserEditorComponent } from './user-editor/user-editor.component';
     styleUrls: ['./user-manager.component.scss'],
 })
 export class UserManagerComponent implements OnInit {
-
     columns: string[];
     dataSource: MatTableDataSource<User>;
 
     constructor(private _userService: UserService, private _dialog: MatDialog) {
-        this.columns = [ 'id', 'name', 'actions' ];
+        this.columns = ['id', 'name', 'actions'];
         this.dataSource = new MatTableDataSource<User>();
     }
 
@@ -25,12 +24,18 @@ export class UserManagerComponent implements OnInit {
     }
 
     getData(): void {
-        this._userService.getAll().pipe(tap(users => this.dataSource.data = users)).subscribe();
+        this._userService
+            .getAll()
+            .pipe(tap((users) => (this.dataSource.data = users)))
+            .subscribe();
     }
 
     showUserDialog(mode: string, user?: User): void {
         const dialogRef = this._dialog.open(UserEditorComponent, { data: { creationMode: mode, user } });
 
-        dialogRef.afterClosed().pipe(tap(() => this.getData())).subscribe();
+        dialogRef
+            .afterClosed()
+            .pipe(tap(() => this.getData()))
+            .subscribe();
     }
 }

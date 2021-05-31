@@ -1,4 +1,4 @@
-import { Observable } from "rxjs";
+import { Observable } from 'rxjs';
 
 export interface ICrudService<T> {
     getAll(id?: number): Observable<T[]>;

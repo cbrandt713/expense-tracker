@@ -9,6 +9,7 @@
     flex-flow: row nowrap;
     justify-content: flex-start;
     align-items: center;
+    z-index: 101;
 }
 a {
     color: var(--color-secondary);

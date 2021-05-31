@@ -5,12 +5,11 @@ import { tap } from 'rxjs/operators';
 import { Expense, ExpenseService, ExpenseValidators, Group, User } from 'src/app/core';
 
 @Component({
-  selector: 'et-expense-editor',
-  templateUrl: './expense-editor.component.html',
-  styleUrls: ['./expense-editor.component.scss']
+    selector: 'et-expense-editor',
+    templateUrl: './expense-editor.component.html',
+    styleUrls: ['./expense-editor.component.scss'],
 })
 export class ExpenseEditorComponent {
-
     isDeleting: boolean;
     isCreating: boolean;
     creationVerb: string;
@@ -19,7 +18,7 @@ export class ExpenseEditorComponent {
     group: Group;
 
     constructor(
-        @Inject(MAT_DIALOG_DATA) data: { creationMode: string; group: Group, expense: Expense },
+        @Inject(MAT_DIALOG_DATA) data: { creationMode: string; group: Group; expense: Expense },
         private _dialogRef: MatDialogRef<ExpenseEditorComponent>,
         private _expenseService: ExpenseService,
         fb: FormBuilder
@@ -33,8 +32,8 @@ export class ExpenseEditorComponent {
             id: [data.expense ? data.expense.id : undefined],
             cost: [data.expense ? data.expense.cost : '', [Validators.required, ExpenseValidators.currencyValue]],
             purpose: [data.expense ? data.expense.purpose : ''],
-            user: [data.expense ? data.expense.user!.id : undefined],
-            group: [data.expense ? data.expense.group!.id : undefined]
+            user: [data.expense ? data.expense.user!.id : undefined, [Validators.required]],
+            group: [data.expense ? data.expense.group!.id : undefined],
         });
     }
 
@@ -68,9 +67,8 @@ export class ExpenseEditorComponent {
             id: this.form.get('id')!.value,
             cost: this.form.get('cost')!.value,
             purpose: this.form.get('purpose')!.value,
-            user: this.users.find(u => u.id === this.form.get('user')!.value),
-            group: this.group
+            user: this.users.find((u) => u.id === this.form.get('user')!.value),
+            group: this.group,
         };
     }
-
 }

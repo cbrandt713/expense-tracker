@@ -12,6 +12,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatListModule } from '@angular/material/list';
 
 const routes: Routes = [{ path: '', component: ExpenseManagerComponent }];
 
@@ -29,7 +30,8 @@ const routes: Routes = [{ path: '', component: ExpenseManagerComponent }];
         ReactiveFormsModule,
         MatFormFieldModule,
         MatInputModule,
-        MatDividerModule
+        MatDividerModule,
+        MatListModule,
     ],
 })
 export class ExpenseManagerModule {}

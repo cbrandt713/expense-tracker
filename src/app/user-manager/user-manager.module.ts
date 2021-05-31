@@ -11,25 +11,20 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 
-const routes: Routes = [
-    { path: '', component: UserManagerComponent }
-];
+const routes: Routes = [{ path: '', component: UserManagerComponent }];
 
 @NgModule({
-  declarations: [
-    UserManagerComponent,
-    UserEditorComponent
-  ],
-  imports: [
-    CommonModule,
-    RouterModule.forChild(routes),
-    MatTableModule,
-    MatDialogModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatButtonModule,
-    MatIconModule,
-    ReactiveFormsModule
-  ]
+    declarations: [UserManagerComponent, UserEditorComponent],
+    imports: [
+        CommonModule,
+        RouterModule.forChild(routes),
+        MatTableModule,
+        MatDialogModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatButtonModule,
+        MatIconModule,
+        ReactiveFormsModule,
+    ],
 })
-export class UserManagerModule { }
+export class UserManagerModule {}

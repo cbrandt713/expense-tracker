@@ -12,27 +12,22 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 
-const routes: Routes = [
-    { path: '', component: GroupManagerComponent }
-];
+const routes: Routes = [{ path: '', component: GroupManagerComponent }];
 
 @NgModule({
-  declarations: [
-    GroupManagerComponent,
-    GroupEditorComponent
-  ],
-  imports: [
-    CommonModule,
-    ReactiveFormsModule,
-    RouterModule.forChild(routes),
-    MatIconModule,
-    MatTableModule,
-    MatDialogModule,
-    MatButtonModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatButtonModule,
-    MatSelectModule
-  ]
+    declarations: [GroupManagerComponent, GroupEditorComponent],
+    imports: [
+        CommonModule,
+        ReactiveFormsModule,
+        RouterModule.forChild(routes),
+        MatIconModule,
+        MatTableModule,
+        MatDialogModule,
+        MatButtonModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatButtonModule,
+        MatSelectModule,
+    ],
 })
-export class GroupManagerModule { }
+export class GroupManagerModule {}

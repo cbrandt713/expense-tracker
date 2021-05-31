@@ -8,11 +8,7 @@ import { ICrudService } from './icrud.service';
 @Injectable({
     providedIn: 'root',
 })
-export class ExpenseService
-    extends ApiService
-    implements ICrudService<Expense>
-{
-
+export class ExpenseService extends ApiService implements ICrudService<Expense> {
     constructor(private _http: HttpClient) {
         super();
     }
