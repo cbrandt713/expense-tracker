@@ -11,10 +11,10 @@
     <ng-container matColumnDef="actions">
         <th mat-header-cell *matHeaderCellDef></th>
         <td class="icon-cell" mat-cell *matCellDef="let group">
-            <button mat-icon-button attr.aria-label="Edit Group {{ group.name }}" (click)="showGroupDialog('edit', group)">
+            <button mat-icon-button attr.aria-label="Edit Group {{ group.name }}" (click)="showGroupDialog(CreationMode.Update, group)">
                 <mat-icon>edit</mat-icon>
             </button>
-            <button mat-icon-button attr.aria-label="Delete Group {{ group.name }}" (click)="showGroupDialog('delete', group)">
+            <button mat-icon-button attr.aria-label="Delete Group {{ group.name }}" (click)="showGroupDialog(CreationMode.Delete, group)">
                 <mat-icon>delete</mat-icon>
             </button>
         </td>
@@ -24,4 +24,4 @@
     <tr mat-row *matRowDef="let row; columns: columns"></tr>
 </table>
 
-<button class="primary" mat-button (click)="showGroupDialog('create', undefined)">Create Group</button>
+<button class="primary" mat-button (click)="showGroupDialog(CreationMode.Create, undefined)">Create Group</button>

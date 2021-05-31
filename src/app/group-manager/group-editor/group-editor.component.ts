@@ -2,7 +2,7 @@ import { ChangeDetectorRef, Component, Inject, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { tap } from 'rxjs/operators';
-import { CreationMode, ExpenseValidators, Group, GroupService, User, UserService } from 'src/app/core';
+import { CreationMode, ExpenseValidators, Group, GroupService, ModalDialogData, User, UserService } from 'src/app/core';
 import { startCase } from 'lodash-es';
 
 @Component({
@@ -22,7 +22,7 @@ export class GroupEditorComponent implements OnInit {
     readonly usersKey: string & keyof Group = 'users';
 
     constructor(
-        @Inject(MAT_DIALOG_DATA) data: { creationMode: string; group: Group },
+        @Inject(MAT_DIALOG_DATA) data: ModalDialogData<Group>,
         private _dialogRef: MatDialogRef<GroupEditorComponent>,
         private _groupService: GroupService,
         private _userService: UserService,
@@ -33,9 +33,9 @@ export class GroupEditorComponent implements OnInit {
         this.isCreating = data.creationMode === CreationMode.Create;
         this.creationVerb = startCase(data.creationMode.toString());
         this.form = _fb.group({
-            [this.idKey]: [data.group ? data.group.id : undefined],
-            [this.nameKey]: [data.group ? data.group.name : '', [Validators.required]],
-            [this.usersKey]: _fb.array(data.group?.users ? data.group.users.map((u) => _fb.control(u.id)) : [], [ExpenseValidators.groupHasUsers]),
+            [this.idKey]: [data.model ? data.model.id : undefined],
+            [this.nameKey]: [data.model ? data.model.name : '', [Validators.required]],
+            [this.usersKey]: _fb.array(data.model?.users ? data.model.users.map((u) => _fb.control(u.id)) : [], [ExpenseValidators.groupHasUsers]),
         });
     }
 

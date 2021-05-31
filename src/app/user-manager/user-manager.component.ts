@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { tap } from 'rxjs/operators';
-import { User, UserService } from 'src/app/core';
+import { CreationMode, ModalDialogData, User, UserService } from 'src/app/core';
 import { UserEditorComponent } from './user-editor/user-editor.component';
 
 @Component({
@@ -13,6 +13,9 @@ import { UserEditorComponent } from './user-editor/user-editor.component';
 export class UserManagerComponent implements OnInit {
     columns: string[];
     dataSource: MatTableDataSource<User>;
+
+    // Bind CreationMode for usage in template
+    readonly CreationMode = CreationMode;
 
     constructor(private _userService: UserService, private _dialog: MatDialog) {
         this.columns = ['id', 'name', 'actions'];
@@ -31,7 +34,7 @@ export class UserManagerComponent implements OnInit {
     }
 
     showUserDialog(mode: string, user?: User): void {
-        const dialogRef = this._dialog.open(UserEditorComponent, { data: { creationMode: mode, user } });
+        const dialogRef = this._dialog.open(UserEditorComponent, { data: { creationMode: mode, model: user } as ModalDialogData<User> });
 
         dialogRef
             .afterClosed()

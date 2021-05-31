@@ -11,10 +11,10 @@
     <ng-container matColumnDef="actions">
         <th mat-header-cell *matHeaderCellDef></th>
         <td class="icon-cell" mat-cell *matCellDef="let user">
-            <button mat-icon-button attr.aria-label="Edit User {{ user.name }}" (click)="showUserDialog('edit', user)">
+            <button mat-icon-button attr.aria-label="Edit User {{ user.name }}" (click)="showUserDialog(CreationMode.Update, user)">
                 <mat-icon>edit</mat-icon>
             </button>
-            <button mat-icon-button attr.aria-label="Delete User {{ user.name }}" (click)="showUserDialog('delete', user)">
+            <button mat-icon-button attr.aria-label="Delete User {{ user.name }}" (click)="showUserDialog(CreationMode.Delete, user)">
                 <mat-icon>delete</mat-icon>
             </button>
         </td>
@@ -24,4 +24,4 @@
     <tr mat-row *matRowDef="let row; columns: columns"></tr>
 </table>
 
-<button class="primary" mat-button (click)="showUserDialog('create', undefined)">Create User</button>
+<button class="primary" mat-button (click)="showUserDialog(CreationMode.Create, undefined)">Create User</button>

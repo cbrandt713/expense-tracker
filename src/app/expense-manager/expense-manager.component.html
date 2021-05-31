@@ -27,10 +27,10 @@
         <ng-container matColumnDef="actions">
             <th mat-header-cell *matHeaderCellDef></th>
             <td class="icon-cell" mat-cell *matCellDef="let expense">
-                <button mat-icon-button attr.aria-label="Edit Expense {{ expense.name }}" (click)="showExpenseDialog('edit', expense)">
+                <button mat-icon-button attr.aria-label="Edit Expense {{ expense.name }}" (click)="showExpenseDialog(CreationMode.Update, expense)">
                     <mat-icon>edit</mat-icon>
                 </button>
-                <button mat-icon-button attr.aria-label="Delete Expense {{ expense.name }}" (click)="showExpenseDialog('delete', expense)">
+                <button mat-icon-button attr.aria-label="Delete Expense {{ expense.name }}" (click)="showExpenseDialog(CreationMode.Delete, expense)">
                     <mat-icon>delete</mat-icon>
                 </button>
             </td>
@@ -38,7 +38,7 @@
         <tr mat-header-row *matHeaderRowDef="columns"></tr>
         <tr mat-row *matRowDef="let row; columns: columns"></tr>
     </table>
-    <button class="primary" mat-button (click)="showExpenseDialog('create', undefined)">Create Expense</button>
+    <button class="primary" mat-button (click)="showExpenseDialog(CreationMode.Create, undefined)">Create Expense</button>
     <mat-divider></mat-divider>
     <h1>Debts Owed</h1>
     <button class="primary" mat-button (click)="calculateTotals()">Calculate</button>
